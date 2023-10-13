@@ -358,6 +358,15 @@ if args.benchmark:
                 past_key_values = out[1]
                 attention_mask = torch.ones(attention_mask.shape[0], attention_mask.shape[1] + 1)
 
+        input_ids = gen_id
+        past_key_values = out[1]
+        attention_mask = torch.ones((attention_mask.shape[0], attention_mask.shape[1] + 1))
+        total_latency += latency
+
+    average_latency = total_latency / args.max_new_tokens
+    print("Average inference latency: %.5f sec." % latency)
+    average_throughput = args.max_new_tokens / total_latency
+    print("Average throughput: {} samples/sec".format(throughput))
 
     print("\n", "-" * 10, "Summary:", "-" * 10)
     print("The first token inference average latency: %.3f sec." % mean(first_token_time))
