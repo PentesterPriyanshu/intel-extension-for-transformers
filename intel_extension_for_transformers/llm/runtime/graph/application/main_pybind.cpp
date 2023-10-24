@@ -75,7 +75,7 @@ class Model {
   int n_ctx = 0;
   std::vector<model_token> last_n_tokens;
   bool token_eos = false;
-  bool inf = false;
+  bool inf_out = false;
   long long int count = 0;
 
   model_token post_process(float* logits);
@@ -111,7 +111,7 @@ void Model::init_model(const std::string& model_path, int max_new_tokens, int ba
   params.temp = temperature;
   params.n_keep = n_keep;
   params.n_discard = n_discard;
-  inf = inf;
+  inf_out = inf;
 
   printf("beam_size: %d, do_sample: %d, top_k: %d, top_p: %f\n", params.beam_size, params.do_sample, params.top_k,
          params.top_p);
@@ -147,7 +147,7 @@ std::vector<model_token> Model::generate(const std::vector<model_token>& input_i
     last_n_tokens.push_back(item);
   }
   // infinite text generation via context swapping
-  if (inf && n_past + curr_input_ids.size() > n_ctx) {
+  if (inf_out && n_past + curr_input_ids.size() > n_ctx) {
     // always keep the first token
     n_past = std::max(1, params.n_keep);
 
@@ -169,7 +169,7 @@ std::vector<model_token> Model::generate(const std::vector<model_token>& input_i
   // }
   count++;
   if (count % 1000 == 0) {
-    fprintf(stderr, "===================count: %d====================\n", count);
+    fprintf(stderr, "\n===================count: %d====================\n", count);
   }
   return {next_token_id};
 }
