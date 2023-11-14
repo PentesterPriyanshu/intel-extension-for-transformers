@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setup Conda &mdash; Intel® Extension for Transformers 0.1.dev1+g432060a documentation</title>
+  <title>Setup Conda &mdash; Intel® Extension for Transformers 0.1.dev1+gef2c479 documentation</title>
       <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../../../_static/graphviz.css" type="text/css" />
@@ -92,7 +92,7 @@
 <p>First, you need to install and configure the Conda environment:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download and install Miniconda</span>
 wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash<span class="w"> </span><span class="sb">`</span>Miniconda*.sh<span class="sb">`</span>
+bash<span class="w"> </span>Miniconda*.sh
 <span class="nb">source</span><span class="w"> </span>~/.bashrc
 </pre></div>
 </div>
@@ -111,8 +111,12 @@ bash<span class="w"> </span><span class="sb">`</span>Miniconda*.sh<span class="s
 conda<span class="w"> </span>install<span class="w"> </span>jemalloc<span class="w"> </span>gperftools<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-y
 </pre></div>
 </div>
-<p>Install other dependencies using pip:</p>
+<p>Install other dependencies using pip</p>
+<blockquote>
+<div><p><strong>Note</strong>: Please make sure transformers version is 4.34.1</p>
+</div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>../../../requirements.txt
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">transformers</span><span class="o">==</span><span class="m">4</span>.34.1
 </pre></div>
 </div>
 </section>
@@ -144,14 +148,6 @@ conda<span class="w"> </span>install<span class="w"> </span>jemalloc<span class=
 <td>"cpu"</td>
 </tr>
 <tr>
-<td>cache.enable</td>
-<td>true</td>
-</tr>
-<tr>
-<td>safety_checker.enable</td>
-<td>true</td>
-</tr>
-<tr>
 <td>tasks_list</td>
 <td>['textchat']</td>
 </tr>
@@ -179,7 +175,7 @@ conda<span class="w"> </span>install<span class="w"> </span>jemalloc<span class=
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   <jinja2.runtime.BlockReference object at 0x7f098caba680> 
+   <jinja2.runtime.BlockReference object at 0x7f44338b2bf0> 
   <p></p><div><a href='https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html' data-cookie-notice='true'>Cookies</a> <a href='https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html'>| Privacy</a></div>
 
 
